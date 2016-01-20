@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "packages": [
+    {
+      "name": "Pandoc Converter",
+      "details": "https://github.com/klmp200/Pandoc-Converter",
+      "labels": [
+        "latex",
+        "github flavored markdown",
+        "github markdown",
+        "html",
+        "markdown",
+        "markup",
+        "pandoc",
+        "reStructuredText",
+        "text manipulation",
+        "textile"
+      ],
+      "releases": [
+        {
+          "sublime_text": ">=3000",
+          "details": "https://github.com/klmp200/Pandoc-Converter"
+        }
+      ]
+    }
+  ]
+}
