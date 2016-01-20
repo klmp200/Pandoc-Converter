@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Pandoc Converter",
+        "command": "pandoc_converter_panel"
+    }
+]

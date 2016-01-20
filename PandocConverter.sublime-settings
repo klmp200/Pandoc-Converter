@@ -1,0 +1,110 @@
+{
+    // path to the pandoc binary. Default locations per platform:
+    "pandoc-path": {
+        "Mac": "/usr/local/bin/pandoc",
+        "Windows": "C:/Users/[username]/AppData/Local/Pandoc/pandoc.exe",
+        "Linux": ""
+    },
+
+    // outputs
+    "outputs": {
+
+      // output label, to appear in sublime quick panel.
+      "Markdown (Pandoc)": {
+      	// Scopes in which output is avaliable
+        "scope": {
+          "text.html": "html"
+        },
+        // sublime syntax file of output format
+        "syntax_file": "Packages/Markdown/Markdown.tmLanguage",
+        // output extension
+        "output-format": "md",
+        // additional arguments passed to pandoc
+        "pandoc-arguments": [
+          "--to=markdown",
+          "--no-wrap",
+          "--atx-headers"
+        ]
+      },
+
+      "HTML 5": {
+        "scope": {
+          "text.html.markdown": "markdown"
+        },
+        "syntax_file": "Packages/HTML/HTML.tmLanguage",
+        "output-format": "html",
+        "pandoc-arguments": [
+          "-s",
+          "--to=html5",
+          "--no-highlight",
+          "--mathml", "--toc",
+          "--self-contained"
+        ]
+      },
+
+      "PDF": {
+        "scope": {
+          "text.html": "html",
+          "text.html.markdown": "markdown"
+        },
+        "output-format": "pdf",
+        "pandoc-arguments": [
+          "-S", "-s", "--toc",
+          // use --latex-engine=engine where engine is
+          // pdflatex|lualatex|xelatex. This may need to be specified with a
+          // full path, e.g. on a mac 
+          // "--latex-engine=/Library/TeX/texbin/pdflatex",
+        ]
+      },
+
+      "Microsoft Word": {
+        "scope": {
+          "text.html": "html",
+          "text.html.markdown": "markdown"
+        },
+        "output-format": "docx",
+        "pandoc-arguments": [
+          "-s", "-t", "docx", "--toc"
+        ]
+      },
+
+      "Libre office": {
+        "scope": {
+          "text.html": "html",
+          "text.html.markdown": "markdown"
+        },
+        "output-format": "odt",
+        "pandoc-arguments": [
+          "-s", "-t", "odt", "--toc"
+        ]
+      },
+
+
+      "EPUB": {
+        "scope": {
+            "text.html": "html",
+            "text.html.markdown": "markdown"
+        },
+        "output-format": "epub",
+        "pandoc-arguments": [
+          "-s", "--mathml", "--toc", "-t", "epub"
+        ]
+      },
+
+      "LATEX": {
+        "scope": {
+          "text.html.markdown": "markdown"
+        },
+        "syntax_file": "Packages/LaTeX/LaTeX.tmLanguage",
+        "output-format": "tex",
+        "pandoc-arguments": [
+          "-s", "-t", "latex", "--toc", "-V", "lang=fr-FR"
+        ]
+      },
+
+    // these should not need to be customized
+
+    // output formats that are written to file, using -o parameter. These we do
+    // not output to a sublime text buffer.
+    "pandoc-format-file": ["docx", "epub", "pdf", "odt"]
+}
