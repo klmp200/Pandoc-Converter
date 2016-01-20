@@ -33,7 +33,7 @@ class PandocConverterCommand(sublime_plugin.TextCommand):
         self.build_output_name(output)
         base_command = [
             self.pandoc,
-            "-f", self.input_format,
+            # "-f", self.input_format,
             self.view.file_name(),
             "-o", self.ofile
         ]
