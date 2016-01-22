@@ -101,7 +101,7 @@
           "-s", "-t", "latex", "--toc", "-V", "lang=fr-FR"
         ]
       },
-    }
+    },
     // these should not need to be customized
 
     // output formats that are written to file, using -o parameter. These we do
