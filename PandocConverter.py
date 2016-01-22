@@ -33,7 +33,7 @@ class PandocConverterCommand(sublime_plugin.TextCommand):
         self.build_output_name(output)
         base_command = [
             self.pandoc,
-            # "-f", self.input_format,
+            "-f", self.input_format,
             self.view.file_name(),
             "-o", self.ofile
         ]
@@ -66,27 +66,22 @@ class PandocConverterCommand(sublime_plugin.TextCommand):
             except:
                 sublime.message_dialog('Wrote to file ' + self.ofile)
         else:
-            sublime.active_window().open_file(self.ofile)
-            sublime.active_window().set_syntax_file(output["syntax_file"])
+            sublime.active_window().open_file(self.ofile).set_syntax_file(
+                output["syntax_file"])
 
     # Define Pandoc path
     def select_pandoc(self):
-
-        key = ''
-        if sublime.platform() == 'osx':
-            key = "Mac"
-        elif sublime.paltform() == 'windows':
-            key = "Windows"
-        else:
-            key = "Linux"
-        self.pandoc = _s("pandoc-path")[key]
+        pandoc_path = _s("pandoc-path")[sublime.platform()]
+        if pandoc_path == '':
+            sublime.message_dialog('Warning : Pandoc path not defined')
+            pandoc_path = 'pandoc'
+        self.pandoc = pandoc_path
 
     # Define format of the converted file
     def detect_input_format(self, output):
 
-        for scope in output["scope"]:
-            if self.view.score_selector(0, scope):
-                self.input_format = output["scope"][scope]
+        scopes = re.split('\s', self.view.scope_name(0))
+        self.input_format = output["scope"][scopes[0]]
 
 
 class PandocConverterPanelCommand(sublime_plugin.WindowCommand):
