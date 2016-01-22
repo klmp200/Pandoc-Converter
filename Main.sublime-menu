@@ -17,12 +17,12 @@
                         [
                             {
                                 "command": "open_file", 
-                                "args": {"file": "${packages}/Pandoc-Converter/Pandoc.sublime-settings"},
+                                "args": {"file": "${packages}/Pandoc-Converter/PandocConverter.sublime-settings"},
                                 "caption": "Settings – Default"
                             },
                             {
                                 "command": "open_file", 
-                                "args": {"file": "${packages}/User/Pandoc-Converter.sublime-settings"},
+                                "args": {"file": "${packages}/User/PandocConverter.sublime-settings"},
                                 "caption": "Settings – User"
                             },
                             { "caption": "-" }
