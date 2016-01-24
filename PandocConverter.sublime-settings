@@ -1,9 +1,9 @@
 {
     // path to the pandoc binary. Default locations per platform:
     "pandoc-path": {
-        "Mac": "/usr/local/bin/pandoc",
-        "Windows": "C:/Users/[username]/AppData/Local/Pandoc/pandoc.exe",
-        "Linux": ""
+        "osx": "/usr/local/bin/pandoc",
+        "windows": "C:/Users/[username]/AppData/Local/Pandoc/pandoc.exe",
+        "linux": ""
     },
 
     // outputs
@@ -98,7 +98,7 @@
         "syntax_file": "Packages/LaTeX/LaTeX.tmLanguage",
         "output-format": "tex",
         "pandoc-arguments": [
-          "-s", "-t", "latex", "--toc", "-V", "lang=fr-FR"
+          "-s", "-t", "latex", "--toc",
         ]
       },
     },
