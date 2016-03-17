@@ -23,8 +23,22 @@ class PandocConverterCommand(sublime_plugin.TextCommand):
         os.chdir(work_dir)
 
         # Launch command line and open file
-        subprocess.call(self.build_command_line(output))
-        self.open(output)
+        proc = subprocess.Popen(self.build_command_line(output),
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                universal_newlines=True)
+        error = proc.communicate()[1]
+
+        if proc.returncode == 0:
+            self.open(output)
+        else:
+            self.show_errors(error)
+
+
+    # Show errors in sublime
+    def show_errors(self, error):
+        sublime.active_window().run_command("show_panel", {
+            "panel": "console", "toggle": True})
+        print(error)
 
     # Build conversion command line
     def build_command_line(self, output):
@@ -62,7 +76,7 @@ class PandocConverterCommand(sublime_plugin.TextCommand):
                 elif sublime.paltform() == 'windows':
                     os.startfile(self.ofile)
                 elif sublime.platform() == 'linux':
-                    subprocess.call(('xdg-open', self.ofile))
+                    subprocess.call(['xdg-open', self.ofile])
             except:
                 sublime.message_dialog('Wrote to file ' + self.ofile)
         else:
@@ -120,7 +134,6 @@ class PandocConverterPanelCommand(sublime_plugin.WindowCommand):
             self.view.run_command('pandoc_converter', {
                 "output": choice,
             })
-
 
 # Allow to access easily to settings
 def _s(key):
