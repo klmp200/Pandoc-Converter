@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+# @Author: klmp200
+# @Date:   2016-03-17 19:08:11
+# @Last Modified by:   klmp200
+# @Last Modified time: 2016-03-19 16:30:02
+
 import sublime
 import sublime_plugin
 import subprocess
@@ -32,7 +38,6 @@ class PandocConverterCommand(sublime_plugin.TextCommand):
             self.open(output)
         else:
             self.show_errors(error)
-
 
     # Show errors in sublime
     def show_errors(self, error):
