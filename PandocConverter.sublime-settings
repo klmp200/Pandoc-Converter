@@ -49,7 +49,7 @@
         },
         "output-format": "pdf",
         "pandoc-arguments": [
-          "-S", "-s", "--toc",
+          "-S", "-s", "--toc"
           // use --latex-engine=engine where engine is
           // pdflatex|lualatex|xelatex. This may need to be specified with a
           // full path, e.g. on a mac 
@@ -98,9 +98,9 @@
         "syntax_file": "Packages/LaTeX/LaTeX.tmLanguage",
         "output-format": "tex",
         "pandoc-arguments": [
-          "-s", "-t", "latex", "--toc",
+          "-s", "-t", "latex", "--toc"
         ]
-      },
+      }
     },
     // these should not need to be customized
 
